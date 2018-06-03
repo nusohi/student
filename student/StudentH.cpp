@@ -65,7 +65,7 @@ void Pupil::editAll() {
 	int age, Class;
 	float grade;
 
-	cout << "1姓名、2性别、3年龄、4班级、5语文、6数学、7英语成绩";
+	cout << "1姓名、2性别、3年龄、4班级、5语文、6数学、7英语成绩\n";
 	while (choice != 0) {
 		cout << "请输入序号+修改值(空格隔开,0退出)： ";
 		cin >> choice;
@@ -106,6 +106,11 @@ void Pupil::showData() {
 	cout << left << setw(16) << ID << setw(8) << name << setw(6) << right << sex << setw(6) << age << setw(8)
 		<< Class << setw(6) << CH << setw(6) << MA << setw(6) << EN << endl;
 }
+void Pupil::showTitle() {
+	cout << "-------- 小学生\n";
+	cout << left << setw(16) << "学号" << setw(8) << "姓名" << setw(6) << right << "性别" << setw(6) << "年龄" << setw(8) << "班级"
+		<< setw(6) << "语文" << setw(6) << "数学" << setw(6) << "英语" << endl;
+}
 
 //set
 void Pupil::setCH(float CH){
@@ -130,7 +135,8 @@ float Pupil::getEN(){
 
 /************    中学生     ***************************************************************/
 
-Middle::Middle(long ID, const char* name, const char* sex, int age, int Class, float CH, float MA, float EN, float GE, float HI, const char* address)
+Middle::Middle(long ID, const char* name, const char* sex, int age, int Class, 
+	float CH, float MA, float EN, float GE, float HI, const char* address)
 	:Pupil(ID, name, sex, age, Class, CH, MA, EN) {
 	setGE(GE);
 	setHI(HI);
@@ -143,7 +149,7 @@ void Middle::editAll() {
 	int age, Class;
 	float grade;
 
-	cout << "1姓名、2性别、3年龄、4班级、5语文、6数学、7英语、8地理、9历史成绩、10家庭地址";
+	cout << "1姓名、2性别、3年龄、4班级、5语文、6数学、7英语、8地理、9历史成绩、10家庭地址\n";
 	while (choice != 0) {
 		cout << "请输入序号+修改值(空格隔开,0退出)： ";
 		cin >> choice;
@@ -197,6 +203,12 @@ void Middle::showData() {
 		<< Class << setw(6) << CH << setw(6) << MA << setw(6) << EN 
 		<< setw(6) << GE << setw(6) << HI 
 		<< '\t' << address << endl;
+}
+void Middle::showTitle() {
+	cout << "\n-------- 中学生\n";
+	cout << left << setw(16) << "学号" << setw(8) << "姓名" << setw(6) << right << "性别" << setw(6) << "年龄" << setw(8) << "班级"
+		<< setw(6) << "语文" << setw(6) << "数学" << setw(6) << "英语" << setw(6) << "地理" << setw(6) << "历史"
+		<< left << "\t家庭地址" << endl;
 }
 
 //set
@@ -276,6 +288,11 @@ void College::editAll() {
 void College::showData() {
 	cout << left << setw(16) << ID << setw(8) << name << setw(6) << right << sex << setw(6) << age << setw(8) << Class
 		<< setw(10) << major <<'\t'<< left<< setw(20) << phoneNumber  << '\t' << address << endl;
+}
+void College::showTitle() {
+	cout << "\n-------- 大学生\n";
+	cout << left << setw(16) << "学号" << setw(8) << "姓名" << setw(6) << right << "性别" << setw(6) << "年龄" << setw(8) << "班级"
+		<< setw(10) << "专业" << '\t' << left << setw(20) << "联系电话" << '\t' << "家庭地址" << endl;
 }
 
 //set

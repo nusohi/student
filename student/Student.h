@@ -46,6 +46,7 @@ public:
 	//
 	void editAll();
 	void showData();
+	static void showTitle();
 	//set
 	void setCH(float CH);
 	void setMA(float MA);
@@ -71,6 +72,7 @@ public:
 	//
 	void editAll();
 	void showData();
+	static void showTitle();
 	//set
 	void setGE(float GE);
 	void setHI(float HI);
@@ -96,6 +98,7 @@ public:
 	//
 	void editAll();
 	void showData();
+	static void showTitle();
 	//set
 	void setMajor(const char* major);
 	void setAddress(const char* address);

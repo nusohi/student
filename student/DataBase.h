@@ -19,13 +19,20 @@ public:
 	bool Delete(long ID);
 	void showAllData();
 	void saveMap();
-private:
+
+	//SDB
+	int calStuNum();
+	int showGender(string gender);
+	int* showAge();
+
+protected:
 	fstream file;
 	string filePath;
 	long fileLen;			//文件长度
 	long size;				//记录大小
 	typedef map<long, T> maptype;
 	maptype dataMap;		//数据临时存储在内存中的地方
+	int ages[30];	//0-30岁
 };
 
 
@@ -91,7 +98,6 @@ bool DataBase<T>::Delete(long ID) {
 template<class T>
 void DataBase<T>::showAllData() {
 	maptype::iterator iter;
-	T data;
 	for (iter = dataMap.begin(); iter != dataMap.end(); iter++)
 		(iter->second).showData();
 }
@@ -107,6 +113,40 @@ void DataBase<T>::saveMap() {
 
 }
 
+
+//SDB
+
+template<class T>
+int DataBase<T>::calStuNum() {
+	return fileLen / size;
+}
+
+template<class T>
+int DataBase<T>::showGender(string gender) {
+	int num = 0;
+	maptype::iterator iter;
+	for (iter = dataMap.begin(); iter != dataMap.end(); iter++) {
+		string sex((iter->second).getSex());
+		if (gender.compare(sex) == 0) {
+			(iter->second).showData();
+			num++;
+		}
+	}
+	return num;
+}
+
+template<class T>
+int* DataBase<T>::showAge() {
+
+	for (int i = 0; i < 30; i++)
+		ages[i] = 0;
+
+	maptype::iterator iter;
+	for (iter = dataMap.begin(); iter != dataMap.end(); iter++) {
+		ages[(iter->second).getAge() - 1]++;
+	}
+	return ages;
+}
 
 
 
