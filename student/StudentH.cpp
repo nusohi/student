@@ -4,7 +4,6 @@
 #include <iomanip>
 #include <string>
 using namespace std;
-#pragma warning(disable:4996);
 
 /************    Ñ§Éú     ***************************************************************/
 
@@ -21,10 +20,10 @@ void Student::setID(long ID){
 	this->ID = ID;
 }
 void Student::setName(const char* name) {
-	strcpy(this->name, name);
+	strcpy_s(this->name, name);
 }
 void Student::setSex(const char* sex) {
-	strcpy(this->sex, sex);
+	strcpy_s(this->sex, sex);
 }
 void Student::setAge(int age) {
 	this->age = age;
@@ -219,7 +218,7 @@ void Middle::setHI(float HI) {
 	this->HI = HI;
 }
 void Middle::setAddress(const char* address) {
-	strcpy(this->address, address);
+	strcpy_s(this->address, address);
 }
 //get
 float Middle::getGE() {
@@ -297,13 +296,13 @@ void College::showTitle() {
 
 //set
 void College::setMajor(const char* major) {
-	strcpy(this->major, major);
+	strcpy_s(this->major, major);
 }
 void College::setAddress(const char* address) {
-	strcpy(this->address, address);
+	strcpy_s(this->address, address);
 }
 void College::setPhoneNumber(const char* phoneNumber) {
-	strcpy(this->phoneNumber, phoneNumber);
+	strcpy_s(this->phoneNumber, phoneNumber);
 }
 //get
 char* College::getMajor() {

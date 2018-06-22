@@ -19,9 +19,11 @@ public:
 	bool Delete(long ID);
 	void showAllData();
 	void saveMap();
+	bool isEmpty();
 
 	//SDB
 	int calStuNum();
+	bool hadGender(string gender);
 	int showGender(string gender);
 	int* showAge();
 
@@ -83,6 +85,7 @@ T* DataBase<T>::query(long ID) {
 template<class T>
 void DataBase<T>::insert(T& data) {
 	dataMap.insert(maptype::value_type(data.getID(), data));
+	fileLen += size;
 	//dataMap[data.getID()] = data;
 }
 
@@ -90,6 +93,7 @@ template<class T>
 bool DataBase<T>::Delete(long ID) {
 	if (query(ID) != NULL) {
 		dataMap.erase(ID);
+		fileLen -= size;
 		return true;
 	}
 	return false;
@@ -113,12 +117,28 @@ void DataBase<T>::saveMap() {
 
 }
 
+template<class T>
+bool DataBase<T>::isEmpty() {
+	return fileLen ? false : true;
+}
 
 //SDB
 
 template<class T>
 int DataBase<T>::calStuNum() {
 	return fileLen / size;
+}
+
+template<class T>
+bool DataBase<T>::hadGender(string gender) {
+	maptype::iterator iter;
+	for (iter = dataMap.begin(); iter != dataMap.end(); iter++) {
+		string sex((iter->second).getSex());
+		if (gender.compare(sex) == 0) {
+			return true;
+		}
+	}
+	return false;
 }
 
 template<class T>
